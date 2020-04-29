@@ -1,6 +1,6 @@
 ## UrBackup_client_pre_post_backup_scripts_template
 
-Pre and post backup scripts template for UrBackup client. I tested it with 2.4.10.
+Pre and post backup scripts template for UrBackup client. I tested it with 2.4.10 at debian 10.
 UrBackup documentation: https://www.urbackup.org/administration_manual.html#x1-330006.4
 
 I use these scripts for stop services before backup and start them back after snapshot creation.
