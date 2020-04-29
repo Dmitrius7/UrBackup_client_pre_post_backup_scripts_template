@@ -1,0 +1,36 @@
+#!/bin/bash
+# /usr/local/etc/urbackup/postfileindex
+
+# version from 29.04.2020
+
+# postfileindex. UrBackup called it after indexing (after snapshot/shadowcopy creation).
+# If this script returns not zero (return code not zero), then UrBackup backup is not started (Backup had an early error. Deleting partial backup).
+
+# Add functions
+source "$(cd $(dirname $0) && pwd)/functions_prepost_scripts"
+
+# Add to UrBackup log
+echo "Starting postfileindex script (normally starts after indexing and snapshot creation)"
+
+
+
+# Add your postfileindex commands here. Begin:
+# This function run command and check errors (return code). 
+# If return code != 0 break script and return 1
+
+# start services back after snapshot creation
+# ___run_command_and_check_error "systemctl start mariadb nginx"
+
+
+
+# ___run_command_and_check_error "your command to run"
+# ___run_command_and_check_error "your command to run"
+
+# Add your postfileindex commands here. End.
+#############################################################
+
+
+# Add to UrBackup log
+echo postfileindex succeeded
+exit 0
+

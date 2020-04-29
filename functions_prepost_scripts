@@ -1,0 +1,71 @@
+#!/bin/bash
+# /usr/local/etc/urbackup/functions_prepost_scripts
+
+# version from 29.04.2020
+
+# This file does not need to be made executable since it connects to the main scripts through source
+
+
+# This function run command and check errors (return code). If return code != 0 start services back, break script and return 1
+# Example:
+# ___prefilebackup_run_command_and_check_error "systemctl stop mariadb nginx"
+___prefilebackup_run_command_and_check_error ()
+{
+# Add command to variable
+local command_to_run=$1
+
+# Add command to UrBackup log
+echo run: $command_to_run
+
+# run command from variable
+$command_to_run
+# get return code
+local return_code=$?
+
+
+# Check errors
+if [ $return_code != 0 ]; then
+	# There is an error. Break script and return 1
+	echo "prefilebackup script on client returned error on command: $command_to_run. Return code: $return_code"
+	echo "UrBackup will not run postfileindex script and stopped services will not be started."
+	echo "Fix it. Run postfileindex script right now for start services back"
+	"$(cd $(dirname $0) && pwd)/postfileindex"
+	echo "prefilebackup script was interrupted!"
+    exit 1
+fi
+
+return 0
+
+}
+
+
+# This function run command and check errors (return code). If return code != 0 break script and return 1
+# Example:
+# ___run_command_and_check_error "systemctl start mariadb nginx"
+___run_command_and_check_error ()
+{
+# Add command to variable
+local command_to_run=$1
+
+# Add command to UrBackup log
+echo run: $command_to_run
+
+# run command from variable
+$command_to_run
+# get return code
+local return_code=$?
+
+
+# Check errors
+if [ $return_code != 0 ]; then
+	# There is an error. Break script and return 1
+	echo "Script on client returned error on command: $command_to_run. Return code: $return_code"
+	echo "Script was interrupted!"
+    exit 1
+fi
+
+return 0
+
+}
+
+

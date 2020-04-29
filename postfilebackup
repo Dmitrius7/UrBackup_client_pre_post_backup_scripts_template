@@ -1,0 +1,25 @@
+#!/bin/bash
+# /usr/local/etc/urbackup/postfilebackup
+
+# version from 29.04.2020
+
+# postfilebackup. UrBackup сalled it if a file backup successfully finished.
+# If this script returns not zero (return code not zero), UrBackup igrore it. 
+# Also UrBackup don't logging this script output
+
+
+# Add your postfilebackup commands here. Begin:
+
+# start after backup successfully finished
+# your command to run
+# your command to run
+# your command to run
+
+
+
+# Add your postfilebackup commands here. End.
+#############################################################
+
+
+exit 0
+

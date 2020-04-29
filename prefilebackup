@@ -1,0 +1,36 @@
+#!/bin/bash
+# /usr/local/etc/urbackup/prefilebackup
+
+# version from 29.04.2020
+
+# prefilebackup - UrBackup called before a file backup (before snapshot/shadowcopy creation).
+# If this script returns not zero (return code not zero), then UrBackup indexing fails and backup is not started. https://www.urbackup.org/administration_manual.html#x1-330006.4
+
+# Add functions
+source "$(cd $(dirname $0) && pwd)/functions_prepost_scripts"
+
+# Add to UrBackup log
+echo Starting prefilebackup script
+
+
+
+# Add your prefilebackup commands here. Begin:
+# This function run command and check errors (return code). 
+# If return code != 0 start services back, break script and return 1
+
+# stop services before backup
+# ___prefilebackup_run_command_and_check_error "systemctl stop mariadb nginx"
+
+
+
+# ___prefilebackup_run_command_and_check_error "your command to run"
+# ___prefilebackup_run_command_and_check_error "your command to run"
+
+# Add your prefilebackup commands here. End.
+#############################################################
+
+
+# Add to UrBackup log
+echo prefilebackup succeeded
+exit 0
+
