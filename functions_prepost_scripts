@@ -27,9 +27,12 @@ local return_code=$?
 if [ $return_code != 0 ]; then
 	# There is an error. Break script and return 1
 	echo "prefilebackup script on client returned error on command: $command_to_run. Return code: $return_code"
-	echo "UrBackup will not run postfileindex script and stopped services will not be started."
-	echo "Fix it. Run postfileindex script right now for start services back"
-	"$(cd $(dirname $0) && pwd)/postfileindex"
+	echo "UrBackup will not run postfileindex and postfilebackup scripts and stopped services will not be started."
+	echo "Fix it. Run postfileindex and postfilebackup scripts right now for start services back"
+	"$(cd $(dirname $0) && pwd)/postfileindex"	
+	echo "Starting postfilebackup script (normally starts after indexing and snapshot creation)"
+	"$(cd $(dirname $0) && pwd)/postfilebackup"
+	echo "postfilebackup succeeded"
 	echo "prefilebackup script was interrupted!"
     exit 1
 fi
