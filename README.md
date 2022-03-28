@@ -18,7 +18,13 @@ I use these scripts for stop services before backup and start them back after sn
 ### How to use
 
 * Put these scripts to `/usr/local/etc/urbackup` and make them executable;
-
+* Make scripts executable
+```
+chmod u+x /usr/local/etc/urbackup/functions_prepost_scripts
+chmod u+x /usr/local/etc/urbackup/postfilebackup
+chmod u+x /usr/local/etc/urbackup/postfileindex
+chmod u+x /usr/local/etc/urbackup/prefilebackup
+```
 * Edit prefilebackup, postfileindex, postfilebackup (there are inctructions inside);
 
 * Create file backup and check log (at the web interface).
